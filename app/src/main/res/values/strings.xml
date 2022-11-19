@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Tasca1.2.2</string>
+    <string-array name="lenguajes">
+        <item>PC</item>
+        <item>Switch</item>
+        <item>Router</item>
+        <item>Roseta</item>
+        <item>Monitor</item>
+    </string-array>
 </resources>
