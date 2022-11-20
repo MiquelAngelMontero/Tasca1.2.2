@@ -2,6 +2,7 @@ package com.example.tasca122;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -75,5 +76,16 @@ public class BBDD extends SQLiteOpenHelper {
         } else {
             Toast.makeText(context, "Les dades s'han introduït correctament", Toast.LENGTH_SHORT);
         }
+    }
+
+    Cursor llegirDb() {
+        String query = "SELECT * FROM " + NOM_TAULA; //Fem la consulta
+        SQLiteDatabase db = this.getReadableDatabase(); //Obtenim la nosta base de dades en una variable
+
+        Cursor cursor = null; //Creem el cursor que guardarà els resultats de la nostra consulta
+        if(db != null) {
+            cursor  = db.rawQuery(query, null); //Si la nostra bbdd no està buida omplim el cursor amb els resultats
+        }
+        return cursor; //Retornem els resultats
     }
 }
