@@ -48,24 +48,14 @@ public class Llista extends RecyclerView.Adapter<Llista.Contenidor> {
 
     @Override
     public void onBindViewHolder(@NonNull Contenidor holder, final int position) {
-        //Obtenim la possició de la array de cada valor
+        //Obtenim la possició de la array de cada valor i afegim els valors de la bbdd a cada objecte
         holder.texte_id_inciencia.setText(String.valueOf(id_incidencia.get(position)));
         holder.texte_nom_incidencia.setText(String.valueOf(nom_incidencia.get(position)));
         holder.texte_element_incidencia.setText(String.valueOf(element_incidencia.get(position)));
-        /*holder.mainLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, Editar.class);
-                intent.putExtra("id", String.valueOf(id_incidencia.get(position)));
-                intent.putExtra("nom", String.valueOf(nom_incidencia.get(position)));
-                intent.putExtra("element", String.valueOf(element_incidencia.get(position)));
-                intent.putExtra("tipus", String.valueOf(tipus_incidencia.get(position)));
-                intent.putExtra("ubicacio", String.valueOf(ubicacio_incidencia.get(position)));
-                intent.putExtra("descripcio", String.valueOf(descripcio_incidencia.get(position)));
-                intent.putExtra("data", String.valueOf(data_incidencia.get(position)));
-                context.startActivity(intent);
-            }
-        });*/
+        holder.texte_tipus_incidencia.setText(String.valueOf(tipus_incidencia.get(position)));
+        holder.texte_ubicacio_incidencia.setText(String.valueOf(ubicacio_incidencia.get(position)));
+        holder.texte_descripcio_incidencia.setText(String.valueOf(descripcio_incidencia.get(position)));
+        holder.texte_data_incidencia.setText(String.valueOf(data_incidencia.get(position)));
     }
 
     @Override
@@ -75,15 +65,18 @@ public class Llista extends RecyclerView.Adapter<Llista.Contenidor> {
 
     public class Contenidor extends RecyclerView.ViewHolder {
         //Declarem els elements que tenim a la llista
-        TextView texte_id_inciencia, texte_nom_incidencia, texte_element_incidencia;
-        //LinearLayout mainLayout;
+        TextView texte_id_inciencia, texte_nom_incidencia, texte_element_incidencia,
+                texte_tipus_incidencia, texte_ubicacio_incidencia, texte_descripcio_incidencia, texte_data_incidencia;
 
         public Contenidor(@NonNull View itemView) {
             super(itemView);
             texte_id_inciencia = itemView.findViewById(R.id.texte_id_inciencia);
             texte_nom_incidencia = itemView.findViewById(R.id.texte_nom_incidencia);
             texte_element_incidencia = itemView.findViewById(R.id.texte_element_incidencia);
-            //mainLayout = itemView.findViewById(R.id.mainLayout);
+            texte_tipus_incidencia = itemView.findViewById(R.id.texte_tipus_incidencia);
+            texte_ubicacio_incidencia = itemView.findViewById(R.id.texte_ubicacio_incidencia);
+            texte_descripcio_incidencia = itemView.findViewById(R.id.texte_descripcio_incidencia);
+            texte_data_incidencia = itemView.findViewById(R.id.texte_data_incidencia);
         }
     }
 }

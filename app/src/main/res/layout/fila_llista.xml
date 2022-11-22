@@ -18,6 +18,40 @@
             android:padding="12dp">
 
             <TextView
+                android:id="@+id/texte_data_incidencia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data"
+                app:layout_constraintStart_toStartOf="@+id/texte_descripcio_incidencia"
+                app:layout_constraintTop_toBottomOf="@+id/texte_descripcio_incidencia" />
+
+            <TextView
+                android:id="@+id/texte_tipus_incidencia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipus"
+                app:layout_constraintStart_toStartOf="@+id/texte_element_incidencia"
+                app:layout_constraintTop_toBottomOf="@+id/texte_element_incidencia" />
+
+            <TextView
+                android:id="@+id/texte_descripcio_incidencia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Descripció"
+                app:layout_constraintStart_toEndOf="@+id/texte_element_incidencia"
+                app:layout_constraintTop_toBottomOf="@+id/texte_nom_incidencia" />
+
+            <TextView
+                android:id="@+id/texte_ubicacio_incidencia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Ubicació"
+                app:layout_constraintStart_toEndOf="@+id/texte_nom_incidencia"
+                app:layout_constraintTop_toTopOf="@+id/texte_nom_incidencia" />
+
+            <TextView
                 android:id="@+id/texte_id_inciencia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -33,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="TextView"
+                android:text="Nom"
                 app:layout_constraintStart_toEndOf="@+id/texte_id_inciencia"
                 app:layout_constraintTop_toTopOf="@+id/texte_id_inciencia" />
 
@@ -41,7 +75,7 @@
                 android:id="@+id/texte_element_incidencia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="Element"
                 app:layout_constraintStart_toStartOf="@+id/texte_nom_incidencia"
                 app:layout_constraintTop_toBottomOf="@+id/texte_nom_incidencia" />
         </androidx.constraintlayout.widget.ConstraintLayout>
