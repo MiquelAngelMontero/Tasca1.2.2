@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     BBDD bd; //Inicialitzem la classe BBDD
     ArrayList<String> id_incidencia, nom_incidencia, element_incidencia, tipus_incidencia, //Declarem les arrays que contindran els continguts de la nostra taula
-    ubicacio_incidencia, descripcio_incidencia, data_incidencia;
+    ubicacio_incidencia, descripcio_incidencia, data_incidencia, resolta_incidencia;
     Llista llistat;
 
     @Override
@@ -50,10 +50,11 @@ public class MainActivity extends AppCompatActivity {
         ubicacio_incidencia = new ArrayList<>();
         descripcio_incidencia = new ArrayList<>();
         data_incidencia = new ArrayList<>();
+        resolta_incidencia = new ArrayList<>();
 
         guardarEnArray();
 
-        llistat = new Llista(MainActivity.this, id_incidencia, nom_incidencia, element_incidencia, tipus_incidencia, ubicacio_incidencia, descripcio_incidencia, data_incidencia);
+        llistat = new Llista(MainActivity.this, id_incidencia, nom_incidencia, element_incidencia, tipus_incidencia, ubicacio_incidencia, descripcio_incidencia, data_incidencia, resolta_incidencia);
         llista.setAdapter(llistat);
         llista.setLayoutManager(new LinearLayoutManager(MainActivity.this));
     }
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 ubicacio_incidencia.add(cursor.getString(4));
                 descripcio_incidencia.add(cursor.getString(5));
                 data_incidencia.add(cursor.getString(6));
+                data_incidencia.add(cursor.getString(7));
             }
         }
     }

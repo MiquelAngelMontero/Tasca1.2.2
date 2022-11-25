@@ -37,7 +37,7 @@ public class Afegir extends AppCompatActivity {
                         tipus_input.getSelectedItem().toString().trim(),
                         ubicacio_input.getText().toString().trim(),
                         descripcio_input.getText().toString().trim(),
-                        data_input.getText().toString().trim()
+                        data_input.getText().toString().trim(), "false"
                         );
             }
         });

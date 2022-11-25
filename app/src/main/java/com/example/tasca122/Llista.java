@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,7 +18,7 @@ public class Llista extends RecyclerView.Adapter<Llista.Contenidor> {
 
     private Context context;
     private ArrayList id_incidencia, nom_incidencia, element_incidencia, tipus_incidencia, //Declarem les arrays que contindran els continguts de la nostra taula
-            ubicacio_incidencia, descripcio_incidencia, data_incidencia;
+            ubicacio_incidencia, descripcio_incidencia, data_incidencia, resolta_incidencia;
 
     //Creem un constructor el qual obtingui tots els valors de la bbdd
     Llista(Context context,
@@ -27,7 +28,8 @@ public class Llista extends RecyclerView.Adapter<Llista.Contenidor> {
            ArrayList tipus_incidencia,
            ArrayList ubicacio_incidencia,
            ArrayList descripcio_incidencia,
-           ArrayList data_incidencia) {
+           ArrayList data_incidencia,
+           ArrayList resolta_incidencia) {
         this.context = context;
         this.id_incidencia = id_incidencia;
         this.nom_incidencia = nom_incidencia;
@@ -36,6 +38,7 @@ public class Llista extends RecyclerView.Adapter<Llista.Contenidor> {
         this.ubicacio_incidencia = ubicacio_incidencia;
         this.descripcio_incidencia = descripcio_incidencia;
         this.data_incidencia = data_incidencia;
+        this.resolta_incidencia = resolta_incidencia;
     }
 
     @NonNull
@@ -56,6 +59,11 @@ public class Llista extends RecyclerView.Adapter<Llista.Contenidor> {
         holder.texte_ubicacio_incidencia.setText(String.valueOf(ubicacio_incidencia.get(position)));
         holder.texte_descripcio_incidencia.setText(String.valueOf(descripcio_incidencia.get(position)));
         holder.texte_data_incidencia.setText(String.valueOf(data_incidencia.get(position)));
+        if(String.valueOf(resolta_incidencia.get(position)) == "false") {
+            holder.check_resolta.setChecked(false);
+        } else {
+            holder.check_resolta.setChecked(true);
+        }
     }
 
     @Override
@@ -67,6 +75,7 @@ public class Llista extends RecyclerView.Adapter<Llista.Contenidor> {
         //Declarem els elements que tenim a la llista
         TextView texte_id_inciencia, texte_nom_incidencia, texte_element_incidencia,
                 texte_tipus_incidencia, texte_ubicacio_incidencia, texte_descripcio_incidencia, texte_data_incidencia;
+        CheckBox check_resolta;
 
         public Contenidor(@NonNull View itemView) {
             super(itemView);
@@ -77,6 +86,7 @@ public class Llista extends RecyclerView.Adapter<Llista.Contenidor> {
             texte_ubicacio_incidencia = itemView.findViewById(R.id.texte_ubicacio_incidencia);
             texte_descripcio_incidencia = itemView.findViewById(R.id.texte_descripcio_incidencia);
             texte_data_incidencia = itemView.findViewById(R.id.texte_data_incidencia);
+            check_resolta = itemView.findViewById(R.id.checkBox);
         }
     }
 }

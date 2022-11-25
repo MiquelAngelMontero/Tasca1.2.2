@@ -25,6 +25,7 @@ public class BBDD extends SQLiteOpenHelper {
     private static final String UBICACIO_COLUMNA = "ubicacio";
     private static final String DESCRIPCIO_COLUMNA = "descripcio";
     private static final String DATA_COLUMNA = "data";
+    private static final String RESOLTA_COLUMNA = "resolta";
 
 
     //Constructor
@@ -44,7 +45,8 @@ public class BBDD extends SQLiteOpenHelper {
                         TIPUS_COLUMNA + " TEXT, " +
                         UBICACIO_COLUMNA + " TEXT, " +
                         DESCRIPCIO_COLUMNA + " TEXT, " +
-                        DATA_COLUMNA + " TEXT);";
+                        DATA_COLUMNA + " TEXT, " +
+                        RESOLTA_COLUMNA + " TEXT);";
         db.execSQL(query);//Execucio de la ordre
     }
 
@@ -55,7 +57,7 @@ public class BBDD extends SQLiteOpenHelper {
         onCreate(db);//I despres es torna a crar
     }
 
-    void afegirIncidencia(String nom, String element, String tipus, String ubicacio, String descripcio, String data) {
+    void afegirIncidencia(String nom, String element, String tipus, String ubicacio, String descripcio, String data, String resolta) {
         SQLiteDatabase db = this.getWritableDatabase();//obtenim la nosta BBDD i la afegim a la variable db
         ContentValues cv = new ContentValues();//valors de la app
 
@@ -66,6 +68,7 @@ public class BBDD extends SQLiteOpenHelper {
         cv.put(UBICACIO_COLUMNA, ubicacio);
         cv.put(DESCRIPCIO_COLUMNA, descripcio);
         cv.put(DATA_COLUMNA, data);
+        cv.put(RESOLTA_COLUMNA, resolta);
 
         //Afegim el cv a la bbdd
         long result = db.insert(NOM_TAULA, null, cv);
