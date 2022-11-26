@@ -1,7 +1,12 @@
 package com.example.tasca122;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +31,12 @@ public class Afegir extends AppCompatActivity {
         data_input = findViewById(R.id.data_input);
         tipus_input = findViewById(R.id.tipus_input);
 
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("Mi notificacion", "Incidencia", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
         afegir_input = findViewById(R.id.afegir_input);
         afegir_input.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +50,14 @@ public class Afegir extends AppCompatActivity {
                         descripcio_input.getText().toString().trim(),
                         data_input.getText().toString().trim()
                         );
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(Afegir.this, "Mi notificacion");
+                builder.setContentTitle("Incidència creada per l'usuari " + nom_input.getText().toString().trim());
+                builder.setContentText(descripcio_input.getText().toString().trim());
+                builder.setSmallIcon(R.drawable.ic_launcher_background);
+                builder.setAutoCancel(true);
+
+                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Afegir.this);
+                managerCompat.notify(1,builder.build());
             }
         });
     }
